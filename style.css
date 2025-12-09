@@ -1,13 +1,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-    --bg-color: #ffffff;
+    --body-bg: #f3f4f6;
+    --paper-bg: #ffffff;
     --text-primary: #111111;
     --text-secondary: #555555;
     --tag-bg: #f3f4f6;
     --tag-text: #374151;
     --border-color: #e5e7eb;
     --accent-color: #2563eb;
+    --toggle-bg: #ffffff;
+    --toggle-icon: #111111;
+}
+
+[data-theme="dark"] {
+    --body-bg: #111111;
+    --paper-bg: #1e1e1e;
+    --text-primary: #f3f4f6;
+    --text-secondary: #9ca3af;
+    --tag-bg: #374151;
+    --tag-text: #f3f4f6;
+    --border-color: #374151;
+    --accent-color: #60a5fa;
+    --toggle-bg: #1e1e1e;
+    --toggle-icon: #f3f4f6;
 }
 
 * {
@@ -18,7 +34,7 @@
 
 body {
     font-family: 'Space Mono', monospace;
-    background-color: #f3f4f6;
+    background-color: var(--body-bg);
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -30,42 +46,11 @@ body {
 }
 
 .paper-container {
-    background-color: #ffffff;
+    background-color: var(--paper-bg);
     max-width: 850px;
     width: 100%;
     padding: 60px;
     border-radius: 2px;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--border-color);
-    position: relative;
-    z-index: 10;
-}
-
-/* Stacked Paper Effect */
-.paper-container::before,
-.paper-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff;
-    border: 1px solid var(--border-color);
-    border-radius: 2px;
-    transition: transform 0.3s ease;
-}
-
-.paper-container::before {
-    z-index: -1;
-    transform: translate(6px, 6px);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.paper-container::after {
-    z-index: -2;
-    transform: translate(12px, 12px);
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
 /* Mobile Responsiveness */
@@ -76,15 +61,6 @@ body {
 
     .paper-container {
         padding: 30px 20px;
-    }
-
-    /* Tone down the offset on mobile */
-    .paper-container::before {
-        transform: translate(4px, 4px);
-    }
-
-    .paper-container::after {
-        transform: translate(8px, 8px);
     }
 }
 
@@ -270,4 +246,206 @@ h2 {
         margin-left: 0;
         margin-bottom: 4px;
     }
+}
+
+/* Floating Controls */
+.floating-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    z-index: 100;
+}
+
+.theme-toggle,
+.download-btn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--toggle-bg);
+    border: 1px solid var(--border-color);
+    color: var(--toggle-icon);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle:hover,
+.download-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.theme-toggle svg,
+.download-btn svg {
+    width: 24px;
+    height: 24px;
+}
+
+/* Landing Page Specifics */
+.landing-header {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landing-header h1 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.landing-header .bio {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.profile-image.large {
+    width: 150px;
+    height: 150px;
+}
+
+.social-links.centered {
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Grids */
+.work-grid,
+.project-grid,
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+/* Cards */
+.work-card,
+.project-card,
+.education-card,
+.blog-card {
+    background-color: var(--body-bg);
+    /* Slight contrast from paper */
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px solid var(--border-color);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.work-card:hover,
+.project-card:hover,
+.blog-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.work-card h3,
+.project-card h3,
+.education-card h3,
+.blog-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.work-card .role {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.work-card .date,
+.education-card .date {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+.project-card p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 16px;
+    line-height: 1.5;
+}
+
+/* Tags */
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.tag {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    background-color: var(--tag-bg);
+    color: var(--tag-text);
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* Recommendation Placeholder */
+.recommendation-container.placeholder {
+    border: 2px dashed var(--border-color);
+    padding: 40px;
+    text-align: center;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    background-color: var(--body-bg);
+}
+
+/* Blog Specifics */
+.blog-card {
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+}
+
+.blog-image {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.blog-content {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.blog-card h3 {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.blog-date {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: auto;
+}
+
+.blog-link {
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+}
+
+.loading-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--text-secondary);
+    padding: 20px;
 }
