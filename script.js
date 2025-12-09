@@ -78,8 +78,7 @@ downloadBtn.addEventListener('click', () => {
 });
 
 // Fetch Medium Posts
-const mediumUsername = 'widi.adyatma';
-const mediumRssUrl = `https://medium.com/feed/@${mediumUsername}`;
+const mediumRssUrl = 'https://medium.com/feed/@widi.adyatma';
 const rss2jsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(mediumRssUrl)}`;
 const blogContainer = document.getElementById('medium-posts');
 
