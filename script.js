@@ -50,32 +50,34 @@ themeToggle.addEventListener('click', () => {
 // Download PDF
 const downloadBtn = document.getElementById('download-btn');
 
-downloadBtn.addEventListener('click', () => {
-    const element = document.querySelector('.paper-container');
-    const currentTheme = htmlElement.getAttribute('data-theme');
+if (downloadBtn) {
+    downloadBtn.addEventListener('click', () => {
+        const element = document.querySelector('.paper-container');
+        const currentTheme = htmlElement.getAttribute('data-theme');
 
-    // Temporarily switch to light mode for PDF generation
-    if (currentTheme === 'dark') {
-        htmlElement.removeAttribute('data-theme');
-    }
+        // Temporarily switch to light mode for PDF generation
+        if (currentTheme === 'dark') {
+            htmlElement.removeAttribute('data-theme');
+        }
 
-    const opt = {
-        margin: 0,
-        filename: 'Ikhsan_Widi_Adyatma_CV.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true },
-        jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-    };
+        const opt = {
+            margin: 0,
+            filename: 'Ikhsan_Widi_Adyatma_CV.pdf',
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2, useCORS: true },
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
 
-    // Generate PDF and then restore theme
-    setTimeout(() => {
-        html2pdf().set(opt).from(element).save().then(() => {
-            if (currentTheme === 'dark') {
-                htmlElement.setAttribute('data-theme', 'dark');
-            }
-        });
-    }, 100);
-});
+        // Generate PDF and then restore theme
+        setTimeout(() => {
+            html2pdf().set(opt).from(element).save().then(() => {
+                if (currentTheme === 'dark') {
+                    htmlElement.setAttribute('data-theme', 'dark');
+                }
+            });
+        }, 100);
+    });
+}
 
 // Fetch Medium Posts
 const mediumRssUrl = 'https://medium.com/feed/@widi.adyatma';
