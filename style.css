@@ -357,6 +357,17 @@ h2 {
     margin-bottom: 8px;
 }
 
+.company-link {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px dotted var(--text-secondary);
+    transition: border-bottom-color 0.2s ease;
+}
+
+.company-link:hover {
+    border-bottom-color: var(--text-primary);
+}
+
 .work-card .role {
     display: block;
     font-size: 0.95rem;
