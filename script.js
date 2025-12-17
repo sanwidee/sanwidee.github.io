@@ -1,6 +1,6 @@
 const themeToggle = document.getElementById('theme-toggle');
 const htmlElement = document.documentElement;
-const iconContainer = themeToggle.querySelector('svg');
+const iconContainer = themeToggle ? themeToggle.querySelector('svg') : null;
 
 const sunIcon = `
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -18,11 +18,11 @@ const moonIcon = `
 function setTheme(theme) {
     if (theme === 'dark') {
         htmlElement.setAttribute('data-theme', 'dark');
-        iconContainer.innerHTML = sunIcon; // Show sun in dark mode (to switch to light)
+        if (iconContainer) iconContainer.innerHTML = sunIcon;
         localStorage.setItem('theme', 'dark');
     } else {
         htmlElement.removeAttribute('data-theme');
-        iconContainer.innerHTML = moonIcon; // Show moon in light mode (to switch to dark)
+        if (iconContainer) iconContainer.innerHTML = moonIcon;
         localStorage.setItem('theme', 'light');
     }
 }
@@ -38,14 +38,16 @@ if (savedTheme) {
 }
 
 // Toggle event listener
-themeToggle.addEventListener('click', () => {
-    const currentTheme = htmlElement.getAttribute('data-theme');
-    if (currentTheme === 'dark') {
-        setTheme('light');
-    } else {
-        setTheme('dark');
-    }
-});
+if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+        const currentTheme = htmlElement.getAttribute('data-theme');
+        if (currentTheme === 'dark') {
+            setTheme('light');
+        } else {
+            setTheme('dark');
+        }
+    });
+}
 
 // Download PDF
 const downloadBtn = document.getElementById('download-btn');
@@ -134,7 +136,7 @@ if (blogContainer) {
                 `;
 
                 // Slider functionality (Drag to scroll could be added here if needed, but native scroll is fine)
-                const track = blogContainer.querySelector('.blog-slider-track');
+
 
 
             } else {

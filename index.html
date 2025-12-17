@@ -5,168 +5,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ikhsan Widi Adyatma - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="landing.css">
 </head>
 
 <body>
     <div class="floating-controls">
-        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+        <a href="cv/index.html" class="control-btn" aria-label="View CV">
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="2">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-        </button>
-        <a href="cv/index.html" class="download-btn" aria-label="View CV">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
-                stroke-width="2">
+                stroke-width="2" width="24" height="24">
                 <path stroke-linecap="round" stroke-linejoin="round"
                     d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
         </a>
     </div>
 
-    <main class="paper-container">
-        <header class="landing-header">
-            <div class="profile-image-container">
-                <img src="assets/profile.png" alt="Ikhsan Widi Adyatma" class="profile-image large">
+    <main class="main-wrapper">
+        <header class="hero">
+            <div class="hero-content">
+                <h1>Ikhsan Widi Adyatma</h1>
+                <p class="bio">Multi Industry experienced product enabler & builder with growing focus on AI value
+                    supercharge.</p>
+
+                <div class="social-links">
+                    <a href="mailto:widi.adyatma@gmail.com" class="social-btn" aria-label="Email">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/ikhsan-widi-adyatma" target="_blank" rel="noopener noreferrer"
+                        class="social-btn" aria-label="LinkedIn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
+                            <circle cx="4" cy="4" r="2" />
+                        </svg>
+                    </a>
+                </div>
             </div>
-            <h1>Ikhsan Widi Adyatma</h1>
-            <p class="bio">Multi Industry experienced product enabler & builder with growing focus on AI value
-                supercharge.</p>
-            <div class="social-links centered">
-                <a href="mailto:widi.adyatma@gmail.com" class="social-btn" aria-label="Email">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                    </svg>
-                </a>
-                <a href="https://linkedin.com/in/ikhsan-widi-adyatma" target="_blank" rel="noopener noreferrer"
-                    class="social-btn" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor" stroke-width="2">
-                        <path stroke-linecap="round" stroke-linejoin="round"
-                            d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z" />
-                        <circle cx="4" cy="4" r="2" />
-                    </svg>
-                </a>
+
+            <div class="hero-visual floating">
+                <div class="profile-image-container">
+                    <img src="assets/profile_new.jpg" alt="Ikhsan Widi Adyatma" class="profile-image">
+                </div>
             </div>
         </header>
 
         <section id="about">
             <h2>About Me</h2>
-            <p class="about-text">
-                Ikhsan is a results-driven Product Manager with 5+ years experience of products in retail distribution,
-                education, & marginalized communities. He specializes in building internal tools, scalable platforms,
-                and no-code solutions that accelerate delivery and validate business needs.
-            </p>
+            <div class="glass-card">
+                <p>
+                    Ikhsan is a results-driven Product Manager with 5+ years experience of products in retail
+                    distribution,
+                    education, & marginalized communities. He specializes in building internal tools, scalable
+                    platforms,
+                    and no-code solutions that accelerate delivery and validate business needs.
+                </p>
+            </div>
         </section>
 
-        <section id="blog">
+        <section id="blog" class="blog-section">
             <h2>My Writings</h2>
-            <div class="blog-grid" id="medium-posts">
-                <!-- Posts will be loaded here via JS -->
+            <div id="medium-posts">
                 <div class="loading-state">Loading posts...</div>
             </div>
         </section>
 
         <section id="work-experience">
             <h2>Where I've Worked</h2>
-            <div class="work-grid">
-                <div class="work-card">
-                    <h3><a href="https://pintarnya.com" target="_blank" rel="noopener noreferrer"
-                            class="company-link">Pintarnya</a></h3>
-                    <span class="role">Product Manager</span>
-                    <span class="date">2024 - Present</span>
-                </div>
-                <div class="work-card">
-                    <h3><a href="https://id.linkedin.com/company/pt-sinbad" target="_blank" rel="noopener noreferrer"
-                            class="company-link">Sinbad</a></h3>
-                    <span class="role">Product Manager</span>
-                    <span class="date">2023 - 2024</span>
-                </div>
-                <div class="work-card">
-                    <h3><a href="https://www.linkedin.com/company/mapan" target="_blank" rel="noopener noreferrer"
-                            class="company-link">Mapan</a></h3>
-                    <span class="role">Product Manager</span>
-                    <span class="date">2022 - 2023</span>
-                </div>
-                <div class="work-card">
-                    <h3><a href="https://pahamify.com/" target="_blank" rel="noopener noreferrer"
-                            class="company-link">Pahamify</a></h3>
-                    <span class="role">Associate PM</span>
-                    <span class="date">2021 - 2022</span>
-                </div>
-                <div class="work-card">
-                    <h3><a href="https://www.linkedin.com/company/warungpintar/" target="_blank"
-                            rel="noopener noreferrer" class="company-link">Warung Pintar</a></h3>
-                    <span class="role">Associate PM</span>
-                    <span class="date">2019 - 2021</span>
-                </div>
+            <div class="grid-2">
+                <a href="https://pintarnya.com" target="_blank" rel="noopener noreferrer" class="card-link">
+                    <div class="glass-card work-card">
+                        <h3>Pintarnya</h3>
+                        <span class="role">Product Manager</span>
+                        <span class="date">2024 - Present</span>
+                    </div>
+                </a>
+                <a href="https://id.linkedin.com/company/pt-sinbad" target="_blank" rel="noopener noreferrer"
+                    class="card-link">
+                    <div class="glass-card work-card">
+                        <h3>Sinbad</h3>
+                        <span class="role">Product Manager</span>
+                        <span class="date">2023 - 2024</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/company/mapan" target="_blank" rel="noopener noreferrer"
+                    class="card-link">
+                    <div class="glass-card work-card">
+                        <h3>Mapan</h3>
+                        <span class="role">Product Manager</span>
+                        <span class="date">2022 - 2023</span>
+                    </div>
+                </a>
+                <a href="https://pahamify.com/" target="_blank" rel="noopener noreferrer" class="card-link">
+                    <div class="glass-card work-card">
+                        <h3>Pahamify</h3>
+                        <span class="role">Associate PM</span>
+                        <span class="date">2021 - 2022</span>
+                    </div>
+                </a>
+                <a href="https://www.linkedin.com/company/warungpintar/" target="_blank" rel="noopener noreferrer"
+                    class="card-link">
+                    <div class="glass-card work-card">
+                        <h3>Warung Pintar</h3>
+                        <span class="role">Associate PM</span>
+                        <span class="date">2019 - 2021</span>
+                    </div>
+                </a>
             </div>
         </section>
 
         <section id="education">
             <h2>Education</h2>
-            <div class="education-card">
+            <div class="glass-card work-card">
                 <h3>Institut Teknologi Bandung</h3>
-                <p>Information System and Technology</p>
+                <span class="role">Information System and Technology</span>
                 <span class="date">2015 - 2019</span>
             </div>
         </section>
 
         <section id="projects">
             <h2>Past Projects & Experience</h2>
-            <div class="project-grid">
+            <div class="grid-3">
                 <!-- Sinbad Projects -->
-                <div class="project-card">
-                    <h3>Distribution Systems (SFA & Intools)</h3>
-                    <p>Managed end-to-end distribution systems to support supplier operations.</p>
+                <div class="glass-card project-card">
+                    <h3>Distribution Systems</h3>
+                    <p>Managed end-to-end distribution systems (SFA & Intools) to support supplier operations.</p>
                     <div class="tags"><span class="tag">Sinbad</span><span class="tag">Systems</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>No-Code Ops Tools</h3>
                     <p>Led iteration of Stock Management, POS, Consignment App, and Survey tools using Bubble.</p>
                     <div class="tags"><span class="tag">Sinbad</span><span class="tag">No-Code</span><span
                             class="tag">Bubble</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Promo Engine Revamp</h3>
                     <p>Revamped promo engine for Dapur Cokelat, removing manual coding & enabling faster creation.</p>
                     <div class="tags"><span class="tag">Sinbad</span><span class="tag">Automation</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Last Mile App MVP</h3>
                     <p>Built driver and manager ops tools to support same-day closing and route assignment.</p>
                     <div class="tags"><span class="tag">Sinbad</span><span class="tag">MVP</span><span
                             class="tag">Logistics</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Unilever Data Bridge</h3>
                     <p>Developed data bridge system enabling seamless purchase order integration.</p>
                     <div class="tags"><span class="tag">Sinbad</span><span class="tag">Integration</span></div>
                 </div>
-                <div class="project-card">
-                    <h3>Image Recognition Research</h3>
+                <div class="glass-card project-card">
+                    <h3>Image Recognition</h3>
                     <p>Led research using Ultralytics to identify SKUs during canvassing in retail stores.</p>
                     <div class="tags"><span class="tag">Sinbad</span><span class="tag">AI</span><span
                             class="tag">Research</span></div>
                 </div>
 
                 <!-- Mapan Projects -->
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Arisan Reshuffling</h3>
                     <p>Initiated feature to prevent cancellation due to OOS & keep group-buying cycle running.</p>
                     <div class="tags"><span class="tag">Mapan</span><span class="tag">Feature</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>KYC Platform</h3>
                     <p>Implemented KYC platform service with Dukcapil integration for compliance.</p>
                     <div class="tags"><span class="tag">Mapan</span><span class="tag">Compliance</span><span
                             class="tag">Identity</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Auth System Enhancement</h3>
                     <p>Improved reliability from 90 to 95% while lowering login cost by 30%.</p>
                     <div class="tags"><span class="tag">Mapan</span><span class="tag">Security</span><span
@@ -174,18 +184,18 @@
                 </div>
 
                 <!-- Pahamify Projects -->
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Assistant-based Learning</h3>
                     <p>Led product iteration used by more than 100k users.</p>
                     <div class="tags"><span class="tag">Pahamify</span><span class="tag">EdTech</span><span
                             class="tag">Growth</span></div>
                 </div>
-                <div class="project-card">
-                    <h3>Video Publishing Streamline</h3>
+                <div class="glass-card project-card">
+                    <h3>Video Publishing</h3>
                     <p>Cut upload time by 50%+ by streamlining video publishing into single-step upload.</p>
                     <div class="tags"><span class="tag">Pahamify</span><span class="tag">Workflow</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Clevertap Journey</h3>
                     <p>Designed targeted journey lifting paid user conversion from 1% -> 2.2%.</p>
                     <div class="tags"><span class="tag">Pahamify</span><span class="tag">Marketing</span><span
@@ -193,19 +203,19 @@
                 </div>
 
                 <!-- Warung Pintar Projects -->
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>CS Ops Metrics</h3>
                     <p>Established metrics reducing response time from >15 min to <5 min.</p>
                             <div class="tags"><span class="tag">Warung Pintar</span><span class="tag">Operations</span>
                             </div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Chatbot Optimization</h3>
                     <p>Iterated chatbot solutions, cutting >50% repetitive inquiries.</p>
                     <div class="tags"><span class="tag">Warung Pintar</span><span class="tag">Automation</span><span
                             class="tag">AI</span></div>
                 </div>
-                <div class="project-card">
+                <div class="glass-card project-card">
                     <h3>Telesales Lead Optimization</h3>
                     <p>Optimized lead data via query/rotation, increasing leads and conversion.</p>
                     <div class="tags"><span class="tag">Warung Pintar</span><span class="tag">Sales</span></div>
@@ -213,12 +223,10 @@
             </div>
         </section>
 
-
-
         <section id="recommendations">
             <h2>Recommendations</h2>
-            <div class="recommendation-container placeholder">
-                <p>Recommendations coming soon...</p>
+            <div class="glass-card" style="border-style: dashed; border-color: var(--text-secondary); opacity: 0.5;">
+                <p style="text-align: center;">Recommendations coming soon...</p>
             </div>
         </section>
     </main>
