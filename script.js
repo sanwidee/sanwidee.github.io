@@ -128,34 +128,14 @@ if (blogContainer) {
 
                 // Wrap in slider structure
                 blogContainer.innerHTML = `
-                    <button class="slider-btn slider-prev" aria-label="Previous">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
-                        </svg>
-                    </button>
                     <div class="blog-slider-track">
                         ${cardsHtml}
                     </div>
-                    <button class="slider-btn slider-next" aria-label="Next">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
                 `;
 
-                // Slider functionality
+                // Slider functionality (Drag to scroll could be added here if needed, but native scroll is fine)
                 const track = blogContainer.querySelector('.blog-slider-track');
-                const prevBtn = blogContainer.querySelector('.slider-prev');
-                const nextBtn = blogContainer.querySelector('.slider-next');
-                const cardWidth = 280; // Approximate card width + gap
 
-                prevBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: -cardWidth, behavior: 'smooth' });
-                });
-
-                nextBtn.addEventListener('click', () => {
-                    track.scrollBy({ left: cardWidth, behavior: 'smooth' });
-                });
 
             } else {
                 blogContainer.innerHTML = '<div class="loading-state">Failed to load posts.</div>';

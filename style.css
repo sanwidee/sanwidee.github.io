@@ -478,6 +478,9 @@ h2 {
     -ms-overflow-style: none;
     padding: 10px 0;
     flex: 1;
+    /* Visual hint for scrolling */
+    mask-image: linear-gradient(to right, black 85%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
 }
 
 .blog-slider-track::-webkit-scrollbar {
@@ -494,36 +497,8 @@ h2 {
     min-height: 280px;
 }
 
-.slider-btn {
-    flex-shrink: 0;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--paper-bg);
-    border: 1px solid var(--border-color);
-    color: var(--text-primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    z-index: 10;
-}
-
-.slider-btn:hover {
-    background-color: var(--tag-bg);
-    transform: scale(1.1);
-}
-
-.slider-btn svg {
-    width: 20px;
-    height: 20px;
-}
-
 @media (max-width: 640px) {
-    .slider-btn {
-        display: none;
-    }
+
 
     .blog-slide {
         flex: 0 0 85%;
