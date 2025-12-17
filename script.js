@@ -148,3 +148,67 @@ if (blogContainer) {
             blogContainer.innerHTML = '<div class="loading-state">Failed to load posts.</div>';
         });
 }
+
+// Project Filtering
+function initProjectFilters() {
+    const filterContainer = document.getElementById('project-filters');
+    if (!filterContainer) return;
+
+    const cards = document.querySelectorAll('.project-card');
+    const companies = new Set();
+
+    // extract companies from first tag
+    cards.forEach(card => {
+        const tag = card.querySelector('.tag');
+        if (tag) {
+            companies.add(tag.textContent.trim());
+        }
+    });
+
+    // Create "All" button
+    const allBtn = document.createElement('button');
+    allBtn.className = 'filter-chip active';
+    allBtn.textContent = 'All';
+    allBtn.addEventListener('click', () => filterProjects('All', allBtn));
+    filterContainer.appendChild(allBtn);
+
+    // Create company buttons
+    companies.forEach(company => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-chip';
+        btn.textContent = company;
+        btn.addEventListener('click', () => filterProjects(company, btn));
+        filterContainer.appendChild(btn);
+    });
+
+    function filterProjects(company, activeBtn) {
+        // Update active state
+        document.querySelectorAll('.filter-chip').forEach(btn => btn.classList.remove('active'));
+        activeBtn.classList.add('active');
+
+        // Show/Hide cards
+        cards.forEach(card => {
+            if (company === 'All') {
+                card.classList.remove('hidden');
+                // card.parentElement is the grid container, but the card is likely directly inside existing structure?
+                // Wait, existing structure is: div.glass-card > ...
+                // BUT in new implementation, is it?
+                // Let's check index.html again.
+                // <div class="glass-card project-card">...</div>
+                // Yes, hidden class on card itself works if it's display:none.
+            } else {
+                const tag = card.querySelector('.tag');
+                if (tag && tag.textContent.trim() === company) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            }
+        });
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+    initProjectFilters();
+});
