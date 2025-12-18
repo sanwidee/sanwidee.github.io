@@ -1,7 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-    --bg-dark: #0a0e17;
+    /* Light Mode (Default) */
+    --bg-main: #f8fafc;
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --card-border: rgba(0, 0, 0, 0.1);
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --accent-primary: #2563eb;
+    --accent-secondary: #7c3aed;
+    --accent-gradient: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+    --card-hover-border: rgba(37, 99, 235, 0.4);
+    --glow: 0 0 20px rgba(37, 99, 235, 0.15);
+    --logo-bg: rgba(0, 0, 0, 0.05);
+
+    /* Gradients */
+    --gradient-1: rgba(37, 99, 235, 0.08);
+    --gradient-2: rgba(124, 58, 237, 0.08);
+}
+
+[data-theme="dark"] {
+    /* Dark Mode */
+    --bg-main: #0a0e17;
     --card-bg: rgba(20, 26, 40, 0.6);
     --card-border: rgba(255, 255, 255, 0.08);
     --text-primary: #ffffff;
@@ -11,6 +31,10 @@
     --accent-gradient: linear-gradient(135deg, #4da2ff 0%, #a78bfa 100%);
     --card-hover-border: rgba(77, 162, 255, 0.4);
     --glow: 0 0 20px rgba(77, 162, 255, 0.15);
+    --logo-bg: rgba(255, 255, 255, 0.05);
+
+    --gradient-1: rgba(77, 162, 255, 0.08);
+    --gradient-2: rgba(167, 139, 250, 0.08);
 }
 
 * {
@@ -21,7 +45,7 @@
 
 body {
     font-family: 'Outfit', sans-serif;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-main);
     color: var(--text-primary);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
@@ -29,8 +53,8 @@ body {
     padding: 0;
     overflow-x: hidden;
     background-image:
-        radial-gradient(circle at 10% 20%, rgba(77, 162, 255, 0.08) 0%, transparent 20%),
-        radial-gradient(circle at 90% 80%, rgba(167, 139, 250, 0.08) 0%, transparent 20%);
+        radial-gradient(circle at 10% 20%, var(--gradient-1) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, var(--gradient-2) 0%, transparent 20%);
     background-attachment: fixed;
 }
 
@@ -40,7 +64,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-    background: var(--bg-dark);
+    background: var(--bg-main);
 }
 
 ::-webkit-scrollbar-thumb {
@@ -125,7 +149,7 @@ p {
     border-radius: 26px;
     object-fit: cover;
     display: block;
-    background-color: var(--bg-dark);
+    background-color: var(--bg-main);
 }
 
 /* Social Links */
@@ -460,7 +484,7 @@ section {
     height: 48px;
     border-radius: 12px;
     object-fit: contain;
-    background: rgba(255, 255, 255, 0.05);
+    background: var(--logo-bg);
     padding: 6px;
     border: 1px solid var(--card-border);
 }
