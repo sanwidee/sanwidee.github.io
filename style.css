@@ -259,8 +259,16 @@ h2 {
     z-index: 100;
 }
 
+.floating-home {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
 .theme-toggle,
-.download-btn {
+.download-btn,
+.home-btn {
     width: 48px;
     height: 48px;
     border-radius: 50%;
@@ -273,16 +281,20 @@ h2 {
     cursor: pointer;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
+    text-decoration: none;
+    /* For the anchor tag */
 }
 
 .theme-toggle:hover,
-.download-btn:hover {
+.download-btn:hover,
+.home-btn:hover {
     transform: scale(1.1);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .theme-toggle svg,
-.download-btn svg {
+.download-btn svg,
+.home-btn svg {
     width: 24px;
     height: 24px;
 }
