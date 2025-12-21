@@ -88,7 +88,7 @@
         <section>
             <h2>Work Experience</h2>
 
-            <div class="experience-item">
+            <div class="experience-item clickable-experience">
                 <div class="job-header">
                     <span class="job-title">Product Manager: Supplier Team</span>
                     <span class="location-tag">Jakarta, Indonesia</span>
@@ -120,7 +120,7 @@
                 </div>
             </div>
 
-            <div class="experience-item">
+            <div class="experience-item clickable-experience">
                 <div class="job-header">
                     <span class="job-title">Product Manager: Platform</span>
                     <span class="location-tag">Jakarta, Indonesia</span>
@@ -148,7 +148,7 @@
                 </div>
             </div>
 
-            <div class="experience-item">
+            <div class="experience-item clickable-experience">
                 <div class="job-header">
                     <span class="job-title">Associate Product: Self Study</span>
                     <span class="location-tag">Jakarta, Indonesia</span>
@@ -171,7 +171,7 @@
                 </div>
             </div>
 
-            <div class="experience-item">
+            <div class="experience-item clickable-experience">
                 <div class="job-header">
                     <span class="job-title">Associate Product Manager: CS & Ops Tools</span>
                     <span class="location-tag">Jakarta, Indonesia</span>
@@ -202,7 +202,7 @@
 
         <section>
             <h2>Education</h2>
-            <div class="experience-item">
+            <div class="experience-item clickable-experience">
                 <div class="job-header">
                     <span class="job-title">Institut Teknologi Bandung</span>
                     <span class="job-date">2015 - 2019</span>
@@ -213,6 +213,13 @@
             </div>
         </section>
     </main>
+
+    <div id="experience-modal" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="modal-close">&times;</button>
+            <div id="modal-body"></div>
+        </div>
+    </div>
 
     <script src="../script.js"></script>
 </body>

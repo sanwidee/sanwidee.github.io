@@ -208,7 +208,143 @@ function initProjectFilters() {
     }
 }
 
+// Experience Modal
+function initExperienceModal() {
+    const modal = document.getElementById('experience-modal');
+    const modalBody = document.getElementById('modal-body');
+    const closeBtn = document.getElementById('modal-close');
+    const experienceItems = document.querySelectorAll('.clickable-experience, .clickable-project');
+
+    if (!modal || !modalBody || !experienceItems.length) return;
+
+    experienceItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            // Stop link navigation for project cards
+            if (e.target.closest('a') && e.currentTarget.classList.contains('clickable-project')) {
+                e.preventDefault();
+            }
+
+            // Clone the content to avoid removing it from the original place
+            const clone = item.cloneNode(true);
+            clone.classList.remove('clickable-experience', 'clickable-project');
+
+            modalBody.innerHTML = '';
+            modalBody.appendChild(clone);
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    });
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        document.body.style.overflow = ''; // Restore scrolling
+    };
+
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    // Close on click outside
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+}
+
+// Markdown Project Loader
+async function loadProjects() {
+    const container = document.getElementById('projects-container');
+    if (!container) return;
+
+    try {
+        // Handle path based on whether we are in the /cv/ directory or root
+        const isCVPage = window.location.pathname.includes('/cv/');
+        const path = isCVPage ? '../projects.md' : 'projects.md';
+
+        const response = await fetch(path);
+        if (!response.ok) throw new Error('Failed to fetch projects.md');
+        const markdown = await response.text();
+
+        // Split by horizontal rule separator
+        const items = markdown.split(/\n---\n/);
+        let html = '';
+
+        items.forEach(item => {
+            const lines = item.trim().split('\n');
+            if (lines.length < 2) return;
+
+            let title = 'Project';
+            let company = '';
+            let tags = [];
+            let contentLines = [];
+
+            lines.forEach(line => {
+                if (line.startsWith('# ')) {
+                    title = line.replace('# ', '').trim();
+                } else if (line.toLowerCase().includes('**company**:')) {
+                    company = line.split(':')[1].trim();
+                } else if (line.toLowerCase().includes('**tags**:')) {
+                    const tagPart = line.split(':')[1];
+                    tags = tagPart ? tagPart.split(',').map(t => t.trim().replace(/\*/g, '')) : [];
+                } else if (line.trim() !== '') {
+                    contentLines.push(line);
+                }
+            });
+
+            const contentMarkdown = contentLines.join('\n');
+            const parsedContent = typeof marked !== 'undefined' ? marked.parse(contentMarkdown) : contentMarkdown;
+            const tagHtml = tags.map(t => `<span class="tag">${t}</span>`).join('');
+
+            // determine classes based on page type
+            const isLanding = !isCVPage;
+            const cardClass = isLanding ? 'glass-card project-card clickable-project' : 'experience-item clickable-experience';
+
+            if (isLanding) {
+                html += `
+                    <div class="${cardClass}" data-company="${company}">
+                        <h3>${title}</h3>
+                        <div class="project-description">${parsedContent}</div>
+                        <div class="tags">${tagHtml}</div>
+                    </div>
+                `;
+            } else {
+                html += `
+                    <div class="${cardClass}" data-company="${company}">
+                        <div class="job-header">
+                            <span class="job-title">${title}</span>
+                            <span class="location-tag">${company}</span>
+                        </div>
+                        <div class="job-description">
+                            ${parsedContent}
+                        </div>
+                        <div class="tags">${tagHtml}</div>
+                    </div>
+                `;
+            }
+        });
+
+        container.innerHTML = html;
+
+        // RE-INITIALIZE to pick up newly added dynamic items
+        initProjectFilters();
+        initExperienceModal();
+
+    } catch (error) {
+        console.error('Error loading projects:', error);
+        container.innerHTML = `<div class="loading-state">Error loading projects: ${error.message}</div>`;
+    }
+}
+
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Initialize static items (like on the CV page)
+    initExperienceModal();
     initProjectFilters();
+
+    // 2. Load dynamic projects from Markdown (like on the main page)
+    loadProjects();
 });

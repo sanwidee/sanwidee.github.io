@@ -474,3 +474,109 @@ section {
 .work-card h3 {
     margin-bottom: 2px;
 }
+
+/* Modal Styling */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(10, 14, 23, 0.85);
+    backdrop-filter: blur(12px);
+    z-index: 2000;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background: var(--card-bg);
+    border: 1px solid var(--card-hover-border);
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    border-radius: 32px;
+    position: relative;
+    padding: 48px;
+    overflow-y: auto;
+    box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+    transform: scale(0.95);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    color: var(--text-primary);
+}
+
+.modal-overlay.active .modal-content {
+    transform: scale(1);
+}
+
+.modal-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--card-border);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: all 0.2s;
+}
+
+.modal-close:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    transform: rotate(90deg);
+}
+
+#modal-body {
+    width: 100%;
+}
+
+.clickable-project {
+    cursor: pointer;
+}
+
+/* Modal inner styles to handle cloned content */
+#modal-body .glass-card {
+    background: transparent;
+    border: none;
+    padding: 0;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+#modal-body .project-card h3 {
+    font-size: 1.75rem;
+    margin-bottom: 24px;
+    background: var(--accent-gradient);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+}
+
+#modal-body .project-card p {
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 32px;
+    color: var(--text-secondary);
+}
+
+#modal-body .tags .tag {
+    font-size: 0.85rem;
+    padding: 8px 16px;
+}
