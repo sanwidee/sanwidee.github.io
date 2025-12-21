@@ -87,6 +87,8 @@
 **Tags**: Warung Pintar, Operations
 **Description**: Established metrics reducing response time from >15 min to <5 min.
 
+![CS Overview Business Process](assets/cs-overview-process.png)
+
 ---
 
 # Chatbot Optimization

@@ -580,3 +580,28 @@ section {
     font-size: 0.85rem;
     padding: 8px 16px;
 }
+
+/* Project Images Support */
+.project-description img,
+#modal-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 20px 0;
+    border: 1px solid var(--card-border);
+}
+
+.project-card .project-description img {
+    max-height: 200px;
+    object-fit: cover;
+    width: 100%;
+    border-color: var(--card-border);
+}
+
+#modal-body .project-description img {
+    max-height: none;
+    /* Show full image in modal */
+    object-fit: contain;
+    border-color: var(--card-hover-border);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}

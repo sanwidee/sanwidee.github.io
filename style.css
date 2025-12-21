@@ -612,3 +612,25 @@ h2 {
         padding: 25px;
     }
 }
+
+/* Project Images Support */
+.project-description img,
+#modal-body img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin: 15px 0;
+    border: 1px solid var(--border-color);
+}
+
+.project-card .project-description img {
+    max-height: 150px;
+    object-fit: cover;
+    width: 100%;
+}
+
+#modal-body .project-description img {
+    max-height: none;
+    /* Show full image in modal */
+    object-fit: contain;
+}
