@@ -87,35 +87,44 @@ const rss2jsonUrl = `https://api.rss2json.com/v1/api.json?rss_url=${encodeURICom
 const blogContainer = document.getElementById('medium-posts');
 
 if (blogContainer) {
+    const isLandingList = blogContainer.tagName === 'UL' || blogContainer.classList.contains('writing-list');
+
     fetch(rss2jsonUrl)
         .then(response => response.json())
         .then(data => {
-            if (data.status === 'ok') {
-                const posts = data.items.slice(0, 10); // Display up to 10 posts
+            if (data.status !== 'ok') throw new Error('RSS returned non-ok status');
 
-                // Build slider HTML
-                let cardsHtml = '';
-                posts.forEach(post => {
-                    // Extract first image from content if thumbnail is missing
+            const posts = data.items.slice(0, 10);
+
+            if (isLandingList) {
+                // TOC-style list (typewriter landing)
+                blogContainer.innerHTML = posts.map(post => {
+                    const date = new Date(post.pubDate).toLocaleDateString('en-US', {
+                        year: 'numeric', month: 'short', day: '2-digit'
+                    });
+                    return `
+                        <li class="writing-item">
+                            <a href="${post.link}" target="_blank" rel="noopener noreferrer">
+                                <span class="writing-item__marker">▸</span>
+                                <span class="writing-item__title">${post.title}</span>
+                                <span class="writing-item__dots"></span>
+                                <span class="writing-item__date">${date}</span>
+                            </a>
+                        </li>
+                    `;
+                }).join('');
+            } else {
+                // Legacy slider card layout (retained for other pages)
+                const cardsHtml = posts.map(post => {
                     let imageUrl = post.thumbnail;
                     if (!imageUrl) {
                         const imgMatch = post.content.match(/<img[^>]+src="([^">]+)"/);
-                        if (imgMatch) {
-                            imageUrl = imgMatch[1];
-                        } else {
-                            // Fallback image or placeholder
-                            imageUrl = 'assets/profile.png';
-                        }
+                        imageUrl = imgMatch ? imgMatch[1] : 'assets/profile.png';
                     }
-
-                    // Format Date
                     const date = new Date(post.pubDate).toLocaleDateString('en-US', {
-                        year: 'numeric',
-                        month: 'short',
-                        day: 'numeric'
+                        year: 'numeric', month: 'short', day: 'numeric'
                     });
-
-                    cardsHtml += `
+                    return `
                         <a href="${post.link}" target="_blank" rel="noopener noreferrer" class="blog-link blog-slide">
                             <div class="blog-card">
                                 <img src="${imageUrl}" alt="${post.title}" class="blog-image">
@@ -126,26 +135,14 @@ if (blogContainer) {
                             </div>
                         </a>
                     `;
-                });
-
-                // Wrap in slider structure
-                blogContainer.innerHTML = `
-                    <div class="blog-slider-track">
-                        ${cardsHtml}
-                    </div>
-                `;
-
-                // Slider functionality (Drag to scroll could be added here if needed, but native scroll is fine)
-
-
-
-            } else {
-                blogContainer.innerHTML = '<div class="loading-state">Failed to load posts.</div>';
+                }).join('');
+                blogContainer.innerHTML = `<div class="blog-slider-track">${cardsHtml}</div>`;
             }
         })
         .catch(error => {
             console.error('Error fetching Medium posts:', error);
-            blogContainer.innerHTML = '<div class="loading-state">Failed to load posts.</div>';
+            const msg = '<li class="loading-state">Failed to load posts.</li>';
+            blogContainer.innerHTML = isLandingList ? msg : '<div class="loading-state">Failed to load posts.</div>';
         });
 }
 
@@ -154,7 +151,12 @@ function initProjectFilters() {
     const filterContainer = document.getElementById('project-filters');
     if (!filterContainer) return;
 
+    // Clear any previously-rendered chips so re-invocation doesn't duplicate them
+    filterContainer.innerHTML = '';
+
     const cards = document.querySelectorAll('.project-card');
+    if (!cards.length) return;
+
     const companies = new Set();
 
     // extract companies from first tag
@@ -301,7 +303,7 @@ async function loadProjects() {
 
             // determine classes based on page type
             const isLanding = !isCVPage;
-            const cardClass = isLanding ? 'glass-card project-card clickable-project' : 'experience-item clickable-experience';
+            const cardClass = isLanding ? 'project-card clickable-project' : 'experience-item clickable-experience';
 
             if (isLanding) {
                 html += `
